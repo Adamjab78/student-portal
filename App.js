@@ -25,6 +25,7 @@ const App = () => {
       </View>
       <View style={{ flex: 10 }}>
         <Profile />
+        <Schedule />
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ fontStyle: "italic" }}>Dhiya Training & Services</Text>
@@ -62,21 +63,81 @@ const Schedule = () => {
         Schedule
       </Text>
       <View>
-      <View style={{ flex: 1, flexDirection: "row" }}>
-      <View style={{ flex: 1, padding: 5, margin: 5 }}>
-        <Text>Hari</Text>
-      </View>
-      <View style={{ flex: 1, padding: 5, margin: 5 }}>
-        <View>
-          <Text>Pagi</Text>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <Text>Hari</Text>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Pagi</Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Petang</Text>
+            </View>
+          </View>
         </View>
-      </View>
-      <View style={{ flex: 1, padding: 5, margin: 5 }}>
-        <View>
-          <Text>Petang</Text>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <Text>Hari</Text>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Pagi</Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Petang</Text>
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <Text>Hari</Text>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Pagi</Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Petang</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <Text>Hari</Text>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Pagi</Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Petang</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <Text>Hari</Text>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Pagi</Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, padding: 5, margin: 5 }}>
+            <View>
+              <Text>Petang</Text>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -92,4 +153,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Schedule;
+export default App;
