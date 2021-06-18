@@ -1,21 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  Text,
+  View,
 
-export default function App() {
+} from "react-native";
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            marginHorizontal: 10,
+            borderBottomWidth: 1,
+            borderColor: "grey",
+          }}
+        >
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Text>Back</Text>
+          </View>
+          <View
+            style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
+          >
+            <Text>Portal Pelajar</Text>
+          </View>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Text>Icon</Text>
+          </View>
+        </View>
+      </View>
+      <View style={{ flex: 10,justifyContent:"center",alignItems:"center" }}>
+       <Text>Content</Text>
+      </View>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ fontStyle: "italic" }}>Dhiya Training & Services</Text>
+      </View>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
