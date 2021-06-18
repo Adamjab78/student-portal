@@ -24,28 +24,32 @@ const App = () => {
         </View>
       </View>
       <View style={{ flex: 10 }}>
-        <View style={{ margin: 10 }}>
-          <Text
-            style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }}
-          >
-            Profile
-          </Text>
-          <View style={{ flexDirection: "row" }}>
-            <View style={{ flex: 1 }}>
-              <Image
-                source={require("./assets/favicon.png")}
-                style={{ height: 50, width: 50 }}
-              />
-            </View>
-            <View style={{ flex: 3, alignItems: "flex-start" }}>
-              <Text>John Doe</Text>
-              <Text>Some other useful information</Text>
-            </View>
-          </View>
-        </View>
+        <Profile />
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ fontStyle: "italic" }}>Dhiya Training & Services</Text>
+      </View>
+    </View>
+  );
+};
+
+const Profile = () => {
+  return (
+    <View style={{ margin: 10 }}>
+      <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }}>
+        Profile
+      </Text>
+      <View style={{ flexDirection: "row" }}>
+        <View style={{ flex: 1 }}>
+          <Image
+            source={require("./assets/favicon.png")}
+            style={{ height: 50, width: 50 }}
+          />
+        </View>
+        <View style={{ flex: 3, alignItems: "flex-start" }}>
+          <Text>John Doe</Text>
+          <Text>Some other useful information</Text>
+        </View>
       </View>
     </View>
   );
