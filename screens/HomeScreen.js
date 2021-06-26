@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import styles from "../styles/styles";
 import Profile from "../components/Profile";
 import Schedule from "../components/Schedule";
@@ -13,7 +14,7 @@ const HomeScreen = () => {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Text>Back</Text>
+            <Ionicons name="chevron-back" size={32} />
           </View>
           <View
             style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
