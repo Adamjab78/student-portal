@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import styles from "../styles/styles";
 import Profile from "../components/Profile";
 import Schedule from "../components/Schedule";
+import EditProfile from "../components/EditProfile";
 
 const HomeScreen = () => {
   return (
@@ -29,6 +30,7 @@ const HomeScreen = () => {
       <View style={{ flex: 10 }}>
         <Profile />
         <Schedule />
+        <EditProfile />
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ fontStyle: "italic" }}>Dhiya Training & Services</Text>
