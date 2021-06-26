@@ -10,6 +10,7 @@ const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
+        
         <View style={styles.header}>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -24,7 +25,7 @@ const HomeScreen = () => {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Text>Icon</Text>
+            <Ionicons name="md-person-circle-outline" size={32} />
           </View>
         </View>
       </View>
