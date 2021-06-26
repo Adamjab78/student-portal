@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, TextInput, Switch,  } from "react-native";
+import { Text, View, TextInput, Button } from "react-native";
 
 const EditProfile = () => {
   return (
@@ -8,14 +8,24 @@ const EditProfile = () => {
         Edit Profile
       </Text>
       <View>
-        <View>
-          <Text>Name :</Text>
-          <TextInput style={{ borderWidth: 1, borderColor: "lightgrey" }} />
+        <View style={{ marginBottom: 10 }}>
+          <Text style={{ paddingBottom: 5 }}>Name :</Text>
+          <TextInput
+            style={{ padding: 5, borderWidth: 1, borderColor: "lightgrey" }}
+          />
         </View>
-        <View>
-          <Text>Other Info :</Text>
-          <TextInput style={{ borderWidth: 1, borderColor: "lightgrey" }} />
-
+        <View style={{ marginBottom: 10 }}>
+          <Text style={{ paddingBottom: 5 }}>Department :</Text>
+          <TextInput
+            style={{ padding: 5, borderWidth: 1, borderColor: "lightgrey" }}
+          />
+        </View>
+        <View style={{ marginBottom: 10 }}>
+          <Button
+            title={"SUBMIT"}
+            color={"grey"}
+            onPress={() => console.log("Button pressed")}
+          />
         </View>
       </View>
     </View>

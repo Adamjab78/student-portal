@@ -1,5 +1,5 @@
 import React from "react";
-import { View} from "react-native";
+import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const Footer = () => {
@@ -11,18 +11,20 @@ const Footer = () => {
   );
 };
 
-const FooterButton = ({name}) => {
-  <View
-    style={{
-      flex: 1,
-      borderWidth: 1,
-      borderColor: "lightgrey",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Ionicons name={name} size={32} />
-  </View>;
+const FooterButton = ({ name }) => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        borderWidth: 1,
+        borderColor: "lightgrey",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Ionicons name={name} size={32} />
+    </View>
+  );
 };
 
 export default Footer;

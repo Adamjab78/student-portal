@@ -16,7 +16,7 @@ const Profile = () => {
         </View>
         <View style={{ flex: 3, alignItems: "flex-start" }}>
           <Text>John Doe</Text>
-          <Text>Some other useful information</Text>
+          <Text>Some Department Name</Text>
         </View>
       </View>
     </View>
