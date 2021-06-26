@@ -14,7 +14,8 @@ const EditProfile = () => {
         </View>
         <View>
           <Text>Other Info :</Text>
-          <Switch />
+          <TextInput style={{ borderWidth: 1, borderColor: "lightgrey" }} />
+
         </View>
       </View>
     </View>
