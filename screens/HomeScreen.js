@@ -5,6 +5,7 @@ import styles from "../styles/styles";
 import Profile from "../components/Profile";
 import Schedule from "../components/Schedule";
 import EditProfile from "../components/EditProfile";
+import Footer from "../components/Footer";
 
 const HomeScreen = () => {
   return (
@@ -34,8 +35,8 @@ const HomeScreen = () => {
         <Schedule />
         <EditProfile />
       </View>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ fontStyle: "italic" }}>Dhiya Training & Services</Text>
+      <View style={{ flex: 1}}>
+        <Footer />
       </View>
     </View>
   );
