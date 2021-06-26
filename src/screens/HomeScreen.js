@@ -11,7 +11,6 @@ const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
-        
         <View style={styles.header}>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -21,7 +20,7 @@ const HomeScreen = () => {
           <View
             style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
           >
-            <Text style={{fontWeight:"bold"}}>Portal Pelajar</Text>
+            <Text style={{ fontWeight: "bold" }}>Portal Pelajar</Text>
           </View>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -35,7 +34,7 @@ const HomeScreen = () => {
         <Schedule />
         <EditProfile />
       </View>
-      <View style={{ flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Footer />
       </View>
     </View>
