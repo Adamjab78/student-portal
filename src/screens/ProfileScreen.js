@@ -1,13 +1,10 @@
 import React from "react";
-import { Text, View, SafeAreaView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Text, View,SafeAreaView, Modal, TouchableOpacity } from "react-native";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import styles from "../styles/styles";
 import Profile from "../components/Profile";
-import Schedule from "../components/Schedule";
-import EditProfile from "../components/EditProfile";
-import Footer from "../components/Footer";
 
-const HomeScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ flex: 1 }}>
@@ -25,15 +22,15 @@ const HomeScreen = () => {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Ionicons name="md-person-circle-outline" size={32} />
+            <AntDesign name="edit" size={32}  onPress={()=>navigation.navigate("EditProfile")}/>
           </View>
         </View>
       </View>
       <View style={{ flex: 10 }}>
-        <Schedule />
+        <Profile />
       </View>
     </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default ProfileScreen;
