@@ -1,9 +1,8 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
-import HomeScreen from "./src/screens/HomeScreen";
+import Navigation from "./src/navigation/Navigation";
 
 const App = () => {
-  return <HomeScreen />;
+  return <Navigation />;
 };
 
 export default App;
