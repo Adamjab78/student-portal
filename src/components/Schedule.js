@@ -3,11 +3,11 @@ import { Text, View, TouchableOpacity } from "react-native";
 
 const Schedule = ({ goToCourses, schedule }) => {
   return (
-    <View style={{ margin: 10 }}>
+    <View style={{ margin: 10,flex:1 }}>
       <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }}>
         Schedule
       </Text>
-      <View>
+      <View style={{flex:1}}>
         {schedule.map((x, i) => (
           <DailySchedule key={i} goToCourses={goToCourses} item={x} />
         ))}
@@ -18,7 +18,7 @@ const Schedule = ({ goToCourses, schedule }) => {
 
 const DailySchedule = ({ item, goToCourses }) => {
   return (
-    <View style={{ flex: 1, flexDirection: "row" }}>
+    <View style={{  flexDirection: "row" }}>
       <View style={{ flex: 1, padding: 5, margin: 5 }}>
         <View>
           <Text style={{ fontWeight: "bold" }}>{item.day}</Text>
