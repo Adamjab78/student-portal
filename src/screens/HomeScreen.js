@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import {  useIsFocused } from '@react-navigation/native';
 import { Ionicons } from "@expo/vector-icons";
 import styles from "../styles/styles";
 import Profile from "../components/Profile";
@@ -13,6 +13,8 @@ import initialScheduleData from "../data/initialScheduleData";
 
 
 const HomeScreen = ({ navigation }) => {
+
+  const isFocused=useIsFocused()
   
   const goToCourses = (item) => {
     console.log(JSON.stringify(item))
@@ -47,6 +49,11 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     populateData();
   }, []);
+
+  useEffect(() => {
+    console.log("focus")
+    populateData();
+  }, [isFocused]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
