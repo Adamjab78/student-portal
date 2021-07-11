@@ -5,10 +5,14 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     flexDirection: "row",
-    marginHorizontal: 10,
+    marginHorizontal: 0,
     borderBottomWidth: 1,
-    borderColor: "grey",
+    borderColor: "lightgrey",
+    backgroundColor:"ghostwhite"
   },
+  defaultText:{
+    color:"grey"
+  }
 });
 
 export default styles;

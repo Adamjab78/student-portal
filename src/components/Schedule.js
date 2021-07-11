@@ -1,13 +1,24 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
+import styles from "../styles/styles"
 
 const Schedule = ({ goToCourses, schedule }) => {
   return (
-    <View style={{ margin: 10,flex:1 }}>
-      <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }}>
+    <View
+      style={{
+        margin: 10,
+        backgroundColor: "white",
+        padding: 10,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "lightgrey",
+      }}
+    >
+      <Text style={[styles.defaultText,{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }]}>
         Schedule
       </Text>
-      <View style={{flex:1}}>
+      {/* <View style={{borderWidth:1, borderColor:"lightgrey"}} /> */}
+      <View>
         {schedule.map((x, i) => (
           <DailySchedule key={i} goToCourses={goToCourses} item={x} />
         ))}
@@ -18,20 +29,20 @@ const Schedule = ({ goToCourses, schedule }) => {
 
 const DailySchedule = ({ item, goToCourses }) => {
   return (
-    <View style={{  flexDirection: "row" }}>
+    <View style={{ flexDirection: "row" }}>
       <View style={{ flex: 1, padding: 5, margin: 5 }}>
         <View>
-          <Text style={{ fontWeight: "bold" }}>{item.day}</Text>
+          <Text style={[styles.defaultText,{ fontWeight: "bold" }]}>{item.day}</Text>
         </View>
       </View>
       {item.schedule.map((x, i) => (
         <TouchableOpacity
           key={i}
-          onPress={() => goToCourses({day:item.day,session:x.session})}
+          onPress={() => goToCourses({ day: item.day, session: x.session })}
           style={{ flex: 1, padding: 5, margin: 5 }}
         >
           <View>
-            <Text style={{ fontWeight: "bold" }}>
+            <Text style={[styles.defaultText,{ fontWeight: "bold" }]}>
               {x.courseName || "Vacant"}
             </Text>
           </View>
