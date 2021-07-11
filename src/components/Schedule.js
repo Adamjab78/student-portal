@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import {  View, TouchableOpacity } from "react-native";
 import styles from "../styles/styles";
 import { SubHeader } from "./Custom";
+import { Text } from "./Custom";
 
 const Schedule = ({ goToCourses, schedule, scheduleExists }) => {
   return (
