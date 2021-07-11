@@ -8,8 +8,10 @@ import Profile from "../components/Profile";
 import Schedule from "../components/Schedule";
 import EditProfile from "../components/EditProfile";
 import Footer from "../components/Footer";
+import Constants from 'expo-constants';
 
 import initialScheduleData from "../data/initialScheduleData";
+import NewsLists from "../components/NewsLists";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -56,18 +58,17 @@ const HomeScreen = ({ navigation }) => {
   }, [isFocused]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, }}>
       <View style={{ flex: 1 }}>
-        <View style={styles.header}>
+        <View style={[styles.header,{paddingTop:Constants.statusBarHeight}]}>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Ionicons name="chevron-back" size={32} />
-          </View>
+          />
+            
           <View
             style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
           >
-            <Text style={{ fontWeight: "bold" }}>Portal Pelajar</Text>
+            <Text style={{ fontWeight: "bold" }}>Home</Text>
           </View>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -76,10 +77,12 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
       </View>
-      <View style={{ flex: 10 }}>
+      <View style={{ flex: 7 }}>
+        
         {schedule && <Schedule schedule={schedule} goToCourses={goToCourses} />}
+        <NewsLists />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
