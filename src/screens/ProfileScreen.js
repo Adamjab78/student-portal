@@ -13,6 +13,8 @@ import Profile from "../components/Profile";
 import EditProfile from "../components/EditProfile";
 import Constants from "expo-constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Header from "../components/Header";
+import {dimension} from "../constants/constants"
 
 const ProfileScreen = ({ navigation }) => {
   const [showEdit, setShowEdit] = useState(false);
@@ -65,6 +67,10 @@ const ProfileScreen = ({ navigation }) => {
       // setSchedule(initialScheduleData);
     }
   };
+  
+  const showEditFunction=()=>{
+    setShowEdit(true)
+  }
 
   useEffect(() => {
     populateData();
@@ -77,7 +83,7 @@ const ProfileScreen = ({ navigation }) => {
         visible={showEdit}
         // presentationStyle={"overFullScreen"}
       >
-        <ScrollView
+        <View
           style={{
             flex: 1,
             borderWidth: 1,
@@ -85,7 +91,7 @@ const ProfileScreen = ({ navigation }) => {
           }}
         >
           <View
-            style={{ flex: 1, marginVertical: 100, backgroundColor: "white" }}
+            style={{ flex: 1, marginVertical: 100, marginHorizontal:10, backgroundColor: "white" }}
           >
             
             <EditProfile
@@ -103,38 +109,17 @@ const ProfileScreen = ({ navigation }) => {
               setId={setId}
               setGender={setGender}
               setDepartment={setDepartment}
+              setProfile={setProfile}
             
             />
           </View>
-        </ScrollView>
+        </View>
       </Modal>
       <View style={{ flex: 1 }}>
-        <View
-          style={[styles.header, { paddingTop: Constants.statusBarHeight }]}
-        >
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Ionicons name="chevron-back" size={32} />
-          </View>
-          <View
-            style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text style={{ fontWeight: "bold" }}>Profile</Text>
-          </View>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <AntDesign
-              name="edit"
-              size={32}
-              // onPress={() => navigation.navigate("EditProfile")}
-              onPress={() => setShowEdit(true)}
-            />
-          </View>
-        </View>
+      <Header title={"profile"} iconTitle={"build-sharp"} onPress={() => showEditFunction()} />
+
       </View>
-      <View style={{ flex: 7 }}>
+      <View style={{ flex: 7,backgroundColor:"white" }}>
         <Profile profile={profile} />
       </View>
     </View>

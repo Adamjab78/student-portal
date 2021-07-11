@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
 import {
-  Text,
   View,
   TextInput,
   Button,
   TouchableOpacity,
   Image,
   Alert,
-  Dimensions
+  Dimensions,
+  ScrollView,
+  StyleSheet,
 } from "react-native";
+import { Text } from "../components/Custom";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Checkbox } from "react-native-paper";
 import { Picker } from "@react-native-picker/picker";
 import RNPickerSelect from "react-native-picker-select";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const screenWidth = Dimensions.get("window").width;  
+const screenWidth = Dimensions.get("window").width;
+
+const departmentOptions = [
+  { label: "Physics", value: "Physics" },
+  { label: "Biology", value: "Biology" },
+  { label: "Economics", value: "Economics" },
+];
 
 const EditProfile = ({
   setShowEdit,
@@ -31,7 +39,8 @@ const EditProfile = ({
   setAge,
   setId,
   setDepartment,
-  populateData
+  populateData,
+  setProfile
 }) => {
   useEffect(() => {
     (async () => {
@@ -70,19 +79,52 @@ const EditProfile = ({
     }
   };
 
+  const removeData = async () => {
+    try {
+      await AsyncStorage.removeItem("profile");
+      console.log("Remove success");
+    } catch (e) {
+      // saving error
+    }
+  };
+
   const processEntry = () => {
     const profile = { image, name, age, gender, id, department };
     setData(profile);
     populateData();
-    setShowEdit(false)
+    setShowEdit(false);
+  };
+
+  const reset = () => {
+    // const profile = { image, name, age, gender, id, department };
+    removeData();
+    setProfile({})
+    setImage()
+    setName()
+    setAge()
+    setGender()
+    setId()
+    setDepartment()
+    populateData();
+    setShowEdit(false);
   };
 
   return (
-    <View style={{ margin: 10 }}>
-      <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }}>
-        Edit Profile
-      </Text>
-      <View>
+    <View style={{ flex: 1 }}>
+      <View style={{ backgroundColor: "navy", paddingHorizontal: 10 }}>
+        <Text
+          style={{
+            marginVertical: 10,
+            fontSize: 17,
+            fontWeight: "bold",
+            color: "white",
+          }}
+        >
+          Edit Profile
+        </Text>
+      </View>
+
+      <ScrollView style={{ padding: 10 }}>
         <View style={{ marginBottom: 10, alignItems: "center" }}>
           <TouchableOpacity onPress={() => pickImage()}>
             {image ? (
@@ -99,14 +141,19 @@ const EditProfile = ({
         <View style={{ marginBottom: 10 }}>
           <Text style={{ paddingBottom: 5 }}>Name :</Text>
           <TextInput
-            style={{ padding: 5, borderWidth: 1, borderColor: "lightgrey" }}
+            style={{
+              padding: 10,
+              borderWidth: 1,
+              borderColor: "lightgrey",
+              borderRadius: 5,
+              fontSize: 25,
+            }}
             onChangeText={(val) => setName(val)}
             value={name}
           />
         </View>
         <View style={{ marginBottom: 10 }}>
           <Text style={{ paddingBottom: 5 }}>Gender :</Text>
-
           <View style={{ flexDirection: "row" }}>
             <View
               style={{
@@ -120,12 +167,18 @@ const EditProfile = ({
                   setGender(gender === "Male" ? "Female" : "Male");
                 }}
               />
-              <Text>Male</Text>
+              <Text
+                style={{
+                  fontSize: 25,
+                  color: gender === "Male" ? "black" : "grey",
+                }}
+              >
+                Male
+              </Text>
             </View>
             <View
               style={{
                 flexDirection: "row",
-
                 alignItems: "center",
                 marginLeft: 15,
               }}
@@ -136,14 +189,27 @@ const EditProfile = ({
                   setGender(gender === "Female" ? "Male" : "Female");
                 }}
               />
-              <Text>Female</Text>
+              <Text
+                style={{
+                  fontSize: 25,
+                  color: gender === "Female" ? "black" : "grey",
+                }}
+              >
+                Female
+              </Text>
             </View>
           </View>
         </View>
         <View style={{ marginBottom: 10 }}>
           <Text style={{ paddingBottom: 5 }}>Age :</Text>
           <TextInput
-            style={{ padding: 5, borderWidth: 1, borderColor: "lightgrey" }}
+            style={{
+              padding: 10,
+              borderWidth: 1,
+              borderColor: "lightgrey",
+              borderRadius: 5,
+              fontSize: 25,
+            }}
             onChangeText={(val) => setAge(val)}
             value={age}
             keyboardType={"number-pad"}
@@ -153,7 +219,13 @@ const EditProfile = ({
         <View style={{ marginBottom: 10 }}>
           <Text style={{ paddingBottom: 5 }}>Employee ID :</Text>
           <TextInput
-            style={{ padding: 5, borderWidth: 1, borderColor: "lightgrey" }}
+            style={{
+              padding: 10,
+              borderWidth: 1,
+              borderColor: "lightgrey",
+              borderRadius: 5,
+              fontSize: 25,
+            }}
             onChangeText={(val) => setId(val)}
             value={id}
             keyboardType={"decimal-pad"}
@@ -163,13 +235,10 @@ const EditProfile = ({
         <View style={{ marginBottom: 10 }}>
           <Text style={{ paddingBottom: 5 }}>Department :</Text>
           <RNPickerSelect
-          value={department}
+            value={department}
             onValueChange={(value) => setDepartment(value)}
-            items={[
-              { label: "Physics", value: "Physics" },
-              { label: "Biology", value: "Biology" },
-              { label: "Economics", value: "Economics" },
-            ]}
+            items={departmentOptions}
+            style={{ ...pickerSelectStyles }}
           />
         </View>
         <View
@@ -179,23 +248,67 @@ const EditProfile = ({
             justifyContent: "center",
           }}
         >
-        <CustomButton label={"Cancel"} onPress={setShowEdit} />
-          <CustomButton label={"Save"} onPress={processEntry} />
-          
+          <CustomButton
+            buttonColor={"orange"}
+            label={"Cancel"}
+            onPress={setShowEdit}
+          />
+          <CustomButton
+            buttonColor={"palegreen"}
+            label={"Save"}
+            onPress={processEntry}
+          />
+          <CustomButton
+            buttonColor={"orangered"}
+            label={"Reset"}
+            onPress={reset}
+          />
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
-const CustomButton = ({onPress,label})=>{
-  return(<TouchableOpacity
-    style={{ width: screenWidth/3,margin: 20, padding: 20, borderWidth: 1 }}
-    onPress={() => onPress(false)}
-  >
-    <Text>{label}</Text>
-  </TouchableOpacity>)
+const CustomButton = ({ onPress, label, labelColor, buttonColor }) => {
+  return (
+    <TouchableOpacity
+      style={{
+        width: screenWidth / 4,
+        margin: 5,
+        padding: 15,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: buttonColor,
+      }}
+      onPress={() => onPress(false)}
+    >
+      <Text style={{ color: labelColor ? labelColor : "white" }}>{label}</Text>
+    </TouchableOpacity>
+  );
+};
 
-}
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 25,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "lightgrey",
+    borderRadius: 4,
+    color: "black",
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+    fontSize: 25,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderWidth: 0.5,
+    borderColor: "purple",
+    borderRadius: 8,
+    color: "black",
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+});
 
 export default EditProfile;

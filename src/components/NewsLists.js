@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  Text,
   View,
   Image,
   FlatList,
   Dimensions,
   TouchableOpacity,
 } from "react-native";
+import {Text, SubHeader} from "../components/Custom"
 import axios from "axios";
 import * as WebBrowser from "expo-web-browser";
 // const apiKey = "74b5d3f148b8421ebcbfcf34258ba99c";
@@ -40,10 +40,8 @@ const NewsLists = () => {
   }, []);
 
   return (
-    <View style={{ margin: 10 }}>
-      <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }}>
-        News
-      </Text>
+    <View style={{ }}>
+      <SubHeader>News</SubHeader>
       <View style={{ flexDirection: "row" }}>
         {newsList && (
           <FlatList

@@ -1,24 +1,24 @@
 const initialScheduleData = [
-    {
-      day: "Isnin",
-      schedule: [{ session: "Pagi" }, { session: "Petang" }],
-    },
-    {
-      day: "Selasa",
-      schedule: [{ session: "Pagi" }, { session: "Petang" }],
-    },
-    {
-      day: "Rabu",
-      schedule: [{ session: "Pagi" }, { session: "Petang" }],
-    },
-    {
-      day: "Khamis",
-      schedule: [{ session: "Pagi" }, { session: "Petang" }],
-    },
-    {
-      day: "Jumaat",
-      schedule: [{ session: "Pagi" }, { session: "Petang" }],
-    },
-  ];
+  {
+    day: "Monday",
+    schedule: [{ session: "Morning" }, { session: "Afternoon" }],
+  },
+  {
+    day: "Tuesday",
+    schedule: [{ session: "Morning" }, { session: "Afternoon" }],
+  },
+  {
+    day: "Wednesday",
+    schedule: [{ session: "Morning" }, { session: "Afternoon" }],
+  },
+  {
+    day: "Thursday",
+    schedule: [{ session: "Morning" }, { session: "Afternoon" }],
+  },
+  {
+    day: "Friday",
+    schedule: [{ session: "Morning" }, { session: "Afternoon" }],
+  },
+];
 
-  export default initialScheduleData
+export default initialScheduleData;

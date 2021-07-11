@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -12,15 +12,11 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import styles from "../styles/styles";
 import Profile from "../components/Profile";
 import initialScheduleData from "../data/initialScheduleData";
-
-const courses = [
-  { title: "English", description: "Modern English", lecturer: "John Doe" },
-  { title: "Math", description: "Modern Math", lecturer: "Max Power" },
-  { title: "Geography", description: "Modern Geography", lecturer: "Max Power" },
-];
+import Constants from "expo-constants";
+import courses from "../data/courses";
+import Header from "../components/Header";
 
 const CoursesScreen = ({ route, navigation }) => {
-
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("schedule");
@@ -44,12 +40,24 @@ const CoursesScreen = ({ route, navigation }) => {
     }
   };
 
+  const removeData = async () => {
+    try {
+      await AsyncStorage.removeItem("schedule");
+      console.log("Remove success");
+    } catch (e) {
+      // saving error
+    }
+  };
+
+  const resetSchedule = () => {
+    removeData();
+  };
+
   const [schedule, setSchedule] = useState(null);
 
   useEffect(() => {
     populateData();
   }, []);
-
 
   const setData = async (value) => {
     try {
@@ -66,15 +74,26 @@ const CoursesScreen = ({ route, navigation }) => {
     console.log(JSON.stringify(item));
     console.log(x);
 
-    const itemOri=schedule.find(x=>x.day===item.day)
-    console.log("itemOri",itemOri)
+    const itemOri = schedule.find((x) => x.day === item.day);
+    console.log("itemOri", itemOri);
     const itemToAdd = {
       day: item.day,
       schedule: [
-        { session: "Pagi", courseName: item.session === "Pagi" ? x : (itemOri.schedule.find(y=>y.session==="Pagi")).courseName },
         {
-          session: "Petang",
-          courseName: item.session === "Petang" ? x : (itemOri.schedule.find(y=>y.session==="Petang")).courseName ,
+          session: "Morning",
+          courseName:
+            item.session === "Morning"
+              ? x
+              : itemOri.schedule.find((y) => y.session === "Morning")
+                  .courseName,
+        },
+        {
+          session: "Afternoon",
+          courseName:
+            item.session === "Afternoon"
+              ? x
+              : itemOri.schedule.find((y) => y.session === "Afternoon")
+                  .courseName,
         },
       ],
     };
@@ -92,43 +111,18 @@ const CoursesScreen = ({ route, navigation }) => {
 
     setData(newScheduleData);
 
-    navigation.goBack()
-
+    navigation.goBack();
   };
 
-
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ flex: 1 }}>
-        <View style={styles.header}>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Ionicons
-              name="chevron-back"
-              size={32}
-              onPress={() => navigation.goBack()}
-            />
-          </View>
-          <View
-            style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text style={{ fontWeight: "bold" }}>List of Course</Text>
-          </View>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <AntDesign
-              name="edit"
-              size={32}
-              onPress={() => navigation.navigate("EditProfile")}
-            />
-          </View>
-        </View>
+       <Header title={"List of Courses"} iconTitle={"book"} goBack={()=>navigation.goBack()} />
       </View>
-      <View style={{ flex: 10 }}>
-        <View style={{ padding: 10 }}>
+      <View style={{ flex: 6 }}>
+        <View style={{ }}>
           <FlatList
+          contentContainerStyle={{padding:10}}
             data={courses}
             keyExtractor={(item, index) => index.toString()}
             // ListHeaderComponent={
@@ -136,17 +130,53 @@ const CoursesScreen = ({ route, navigation }) => {
             //     <Text>Title</Text>
             //   </View>
             // }
+            ListFooterComponent={() => (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "flex-end",
+                  padding: 20,
+                  alignItems: "flex-end",
+                }}
+              >
+                <TouchableOpacity
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  onPress={() => {resetSchedule();navigation.goBack()}}
+                >
+                  <Ionicons
+                    name="ios-close-circle-outline"
+                    size={24}
+                    color="red"
+                    style={{ marginRight: 5 }}
+                  />
+                  <Text style={{ color: "red" }}>Reset</Text>
+                </TouchableOpacity>
+              </View>
+            )}
             renderItem={({ item, index }) => (
               <TouchableOpacity
-              style={{borderWidth:1,padding:10,marginBottom:10, borderRadius:10,borderColor:"lightgrey"}} onPress={() => addCourse(item.title)}>
-                <Text>{item.title}</Text>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                style={{
+                  borderWidth: 1,
+                  padding: 10,
+                  marginBottom: 10,
+                  borderRadius: 10,
+                  borderColor: "lightgrey",
+                }}
+                onPress={() => addCourse(item.title)}
+              >
+                <Text style={{color:"navy", fontWeight:"bold",paddingBottom:5}}>{item.title}</Text>
+                <Text style={{paddingBottom:10}}>{item.lecturer}</Text>
+                <Text style={{color:"grey",paddingBottom:5}}>{item.description}</Text>
               </TouchableOpacity>
             )}
           />
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
