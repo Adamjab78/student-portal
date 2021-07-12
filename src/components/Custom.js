@@ -8,22 +8,22 @@ const Text = ({ style, ...props }) => {
 
 const SubHeader = ({ style, ...props }) => {
   return (
-      <>
-    <OriText
-      style={[
-        styles.defaultText,
-        {
-            color:"steelblue",
-          marginVertical: 10,
-          paddingHorizontal: 10,
-          fontSize: 17,
-          fontWeight: "bold",
-          textTransform:"uppercase"
-        },
-      ]}
-      {...props}
-    />
-    {/* <View style={{height:1, backgroundColor:"steelblue", marginHorizontal:10}}/> */}
+    <>
+      <OriText
+        style={[
+          styles.defaultText,
+          {
+            color: "steelblue",
+            marginVertical: 10,
+            paddingHorizontal: 10,
+            fontSize: 17,
+            fontWeight: "bold",
+            textTransform: "uppercase",
+          },
+        ]}
+        {...props}
+      />
+      {/* <View style={{height:1, backgroundColor:"steelblue", marginHorizontal:10}}/> */}
     </>
   );
 };

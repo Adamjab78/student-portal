@@ -82,7 +82,7 @@ const DailySchedule = ({ item, goToCourses }) => {
     <View style={{ flexDirection: "row" }}>
       <View style={{ flex: 1, padding: 5, margin: 5 }}>
         <View>
-          <Text style={[styles.defaultText, { fontWeight: "bold" }]}>
+          <Text >
             {item.day}
           </Text>
         </View>
@@ -94,7 +94,7 @@ const DailySchedule = ({ item, goToCourses }) => {
           style={{ flex: 1, padding: 5, margin: 5 }}
         >
           <View>
-            <Text style={[styles.defaultText, { fontWeight: "bold" }]}>
+            <Text style={{ color:x.courseName?"blue":"red" }}>
               {x.courseName || "Vacant"}
             </Text>
           </View>
